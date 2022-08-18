@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1 style="text-align: center;">הוסף לקוח</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 font-weight-bold">
+               <h4>     ראשי    </h4>
+            </div>
+            <div class="col-md-6 font-weight-bold">
+               <h4> משני</h4>
+            </div>
+        </div>
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.main_last_name.label }}<br>
+                {{ form.main_last_name(size=32) }}<br>
+                {% for error in form.main_last_name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.second_last_name.label }}<br>
+                {{ form.second_last_name(size=32) }}<br>
+                {% for error in form.second_last_name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.main_first_name.label }}<br>
+                {{ form.main_first_name(size=32) }}<br>
+                {% for error in form.main_first_name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.second_first_name.label }}<br>
+                {{ form.second_first_name(size=32) }}<br>
+                {% for error in form.second_first_name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+        
+    
+    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.main_id.label }}<br>
+                {{ form.main_id(size=32) }}<br>
+                {% for error in form.main_id.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.second_id.label }}<br>
+                {{ form.second_id(size=32) }}<br>
+                {% for error in form.second_id.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.main_birth_year.label }}<br>
+                {{ form.main_birth_year(size=32) }}<br>
+                {% for error in form.main_birth_year.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.second_birth_year.label }}<br>
+                {{ form.second_birth_year(size=32) }}<br>
+                {% for error in form.second_birth_year.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.main_phone.label }}<br>
+                {{ form.main_phone(size=32) }}<br>
+                {% for error in form.main_phone.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.second_phone.label }}<br>
+                {{ form.second_phone(size=32) }}<br>
+                {% for error in form.second_phone.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.main_is_dutch.label }}<br>
+                {{ form.main_is_dutch() }}<br>
+                {% for error in form.main_is_dutch.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.second_is_dutch.label }}<br>
+                {{ form.second_is_dutch() }}<br>
+                {% for error in form.second_is_dutch.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.main_status.label }}<br>
+                {{ form.main_status() }}<br>
+                {% for error in form.main_status.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.second_status.label }}<br>
+                {{ form.second_status() }}<br>
+                {% for error in form.second_status.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                {{ form.main_is_davids.label }}<br>
+                {{ form.main_is_davids() }}<br>
+                {% for error in form.main_is_davids.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                {{ form.city_choice.label }}<br>
+{#                {{ form.address_city() }}<br>#}
+                <input list="cities-data" id="city_choice" name="city_choice" />
+                <datalist id="cities-data">
+                    <option value="">טוען רשימת ערים...</option>
+                </datalist>
+                {% for error in form.city_choice.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-4">
+                {{ form.street_choice.label }}<br>
+                <input list="streets-data" id="street_choice" name="street_choice" />
+                <datalist id="streets-data">
+                    <option value="">
+                </datalist>
+            </div>
+
+
+            <div class="form-group col-md-4">
+                {{ form.address_house_num.label }}<br>
+                {{ form.address_house_num() }}<br>
+                {% for error in form.address_house_num.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}    
+            </div>
+        </div>
+    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.therapist_id.label }}<br>
+                {{ form.therapist_id() }}<br>
+                {% for error in form.therapist_id.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.description.label }}<br>
+                {{ form.description(cols=50, rows=4) }}<br>
+                {% for error in form.description.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+        <p>{{ form.submit() }}</p>
+    </form>
+    </div>
+
+{% endblock %}
+{%  block scripts %}
+    {{ super() }}
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+/**
+ * Select a street by city in Israel
+ * Cities data is from https://data.gov.il/dataset/citiesandsettelments
+ * Streets data is from https://data.gov.il/dataset/321
+ * API documentation https://docs.ckan.org/en/latest/maintaining/datastore.html#ckanext.datastore.logic.action.datastore_search
+ */
+
+// REST API URL
+
+const api_url = "https://data.gov.il/api/3/action/datastore_search";
+// Cities endpoint
+const cities_resource_id = "5c78e9fa-c2e2-4771-93ff-7f400a12f7ba";
+// Streets endpoint
+const streets_resource_id = "a7296d1a-f8c9-4b70-96c2-6ebb4352f8e3";
+// Field names
+const city_name_key = "שם_ישוב";
+const street_name_key = "שם_רחוב";
+// dataset ids
+const cities_data_id = "cities-data";
+const streets_data_id = "streets-data";
+// input elements
+const cities_input = document.getElementById("city_choice");
+const streets_input = document.getElementById("street_choice");
+
+/**
+ * Get data from gov data API
+ * Uses Axios just because it wes easy
+ */
+const getData = (resource_id, q = "", limit = "100") => {
+  console.log("sending", resource_id, q);
+  return axios.get(api_url, {
+    params: { resource_id, q, limit },
+    responseType: "json"
+  });
+};
+
+/**
+ * Parse records from data into 'option' elements,
+ * use data from key 'field_name' as the option value
+ */
+const parseResponse = (records = [], field_name) => {
+  const parsed =
+    records
+      .map((record) => `<option value="${record[field_name].trim()}">`)
+      .join("\n") || "";
+  console.log("parsed", field_name, parsed);
+  return Promise.resolve(parsed);
+};
+
+/**
+ * Fetch data, parse, and populate Datalist
+ */
+const populateDataList = (id, resource_id, field_name, query, limit) => {
+  const datalist_element = document.getElementById(id);
+  if (!datalist_element) {
+    console.log(
+      "Datalist with id",
+      id,
+      "doesn't exist in the document, aborting"
+    );
+    return;
+  }
+  getData(resource_id, query, limit)
+    .then((response) =>
+      parseResponse(response?.data?.result?.records, field_name)
+    )
+    .then((html) => (datalist_element.innerHTML = html))
+    .catch((error) => {
+      console.log("Couldn't get list for", id, "query:", query, error);
+    });
+};
+
+// ---- APP ----
+
+/**
+ * Populate cities.
+ * There are about 1300 cities in Israel, and the API upper limit is 32000
+ * so we can safely populate the list only once.
+ */
+populateDataList(
+  cities_data_id,
+  cities_resource_id,
+  city_name_key,
+  undefined,
+  32000
+);
+
+/**
+ * Populate streets
+ * Update the streets list on every city name change
+ * (assuming there aren't more than 32,000 streets in any city)
+ */
+cities_input.addEventListener("change", (event) => {
+  populateDataList(
+    streets_data_id,
+    streets_resource_id,
+    street_name_key,
+    {
+      שם_ישוב: cities_input.value
+    },
+    32000
+  );
+});
+</script>
+    {%  endblock scripts %}

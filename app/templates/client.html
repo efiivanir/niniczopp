@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <table class="table table-bordered border-primary">
+         <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">ראשי</th>
+              <th scope="col">משני</th>
+            </tr>
+         </thead>
+        <tbody>
+            <tr>
+                <th scope="row">שם משפחה</th>
+                <td>{{ client.main_last_name }}</td>
+                <td>{{ client.second_last_name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">שם פרטי</th>
+                <td>{{ client.main_first_name }}</td>
+                <td>{{ client.second_first_name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">מס תעודת זהות</th>
+                <td>{{ client.main_id }}</td>
+                <td>{{ client.second_id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">שנת לידה</th>
+                <td>{{ client.main_birth_year }}</td>
+                <td>{{ client.second_birth_year }}</td>
+            </tr>
+            <tr>
+                <th scope="row">מס טלפון</th>
+                <td>{{ client.main_phone }}</td>
+                <td>{{ client.second_phone }}</td>
+            </tr>
+            <tr>
+                <th scope="row">הולנדי</th>
+                <td>{{ client.main_is_dutch }}</td>
+                <td>{{ client.second_is_dutch }}</td>
+            </tr>
+            <tr>
+                <th scope="row">כתובת מגורים</th>
+                <td>{{ client.address_city }},{{ client.address_street }} {{ client.address_house_num }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">מטופל ביד דוידס</th>
+                <td>{{ client.main_is_davids }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">מטפל</th>
+                <td>{{ therapist_uname }}</td>
+                <td></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,4 @@
+FLASK_APP=niniczopp.py
+FLASK_ENV=development
+FLASK_RUN_PORT=5011
+FLASK_RUN_HOST=0.0.0.0

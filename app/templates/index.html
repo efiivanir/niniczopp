@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>טבלת בתי אב: {{ current_user.first_name }} {{ current_user.last_name }}</h1>
+    <br>
+    <hr>
+    <div id="table"></div>
+    <a href="{{ url_for('main.add_client') }}">{{ 'הוסף מטופל חדש' }}</a>
+    <p>
+{% endblock %}
+{%  block scripts %}
+    <script>
+    
+        {#import { Grid, html } from "gridjs";#}
+        new gridjs.Grid({
+        columns: [
+            {
+                name: 'ראשי',
+                columns:[
+                    { id: 'main_last_name', name: 'שם משפחה' },
+                    { id: 'main_first_name', name: 'שם פרטי' },
+                    { id: 'main_birth_year', name: 'שנת לידה' },
+                    { id: 'main_status', name: 'מצב' },
+                    { id: 'main_is_davids', name: 'דודס' },
+                ],
+            },
+            {
+                name: 'כתובת',
+                columns:[
+                    { id: 'address_city', name: 'עיר', sort: false },
+                    { id: 'address_street', name: 'רחוב', sort: false },
+                    { id: 'address_house_num', name: 'מס בית' },
+                ],
+            },
+            {
+                name: 'משני',
+                columns:[
+                    { id: 'second_last_name', name: 'שם משפחה' },
+                    { id: 'second_first_name', name: 'שם פרטי' },
+                ],
+            },
+            {
+                name: 'פעולות',
+                columns:[
+                    {
+                        id: 'view',
+                        name: 'צפיה'
+                    },
+                    {
+                        id: 'edit',
+                        name: 'עריכה'
+                    },
+                ],
+            },
+        ],
+        data: [
+          {% for client in clients %}
+            {
+                main_last_name: '{{ client.main_last_name }}',
+                main_first_name: '{{ client.main_first_name }}',
+                main_birth_year: '{{ client.main_birth_year }}',
+                main_status: '{{ client.main_status }}',
+                main_is_davids: '{{ client.main_is_davids }}',
+                address_city: '{{ client.address_city }}',
+                address_street: '{{ client.address_street }}',
+                address_house_num: '{{ client.address_house_num }}',
+                second_last_name: '{{ client.second_last_name }}',
+                second_first_name: '{{ client.second_first_name }}',
+                view: gridjs.html('<a href="client/{{ client.id }}">צפיה</a>'),
+                edit: gridjs.html('<a href="client/{{ client.id }}">עריכה</a>')
+            },
+          {% endfor %}
+        ],
+        search: {
+          selector: (cell, rowIndex, cellIndex) => [0, 1, 2,3].includes(cellIndex) ? cell : null,
+        },
+        sort: true,
+        resizable: true,
+        pagination: {
+            limit: 10
+        },
+            style: {
+                table: {
+                    border: '5px solid #ccc'
+                },
+                th: {
+                    'background-color': 'rgba(0, 0, 0, 0.1)',
+                    color: '#000',
+                    'border-bottom': '5px solid #ccc',
+                    'border-top': '5px solid #ccc',
+                    'border-right': '5px solid #ccc',
+                    'border-left': '5px solid #ccc',
+                    'text-align': 'center'
+                },
+                td: {
+                    'text-align': 'center'
+                }
+            }
+      }).render(document.getElementById('table'));
+    </script>
+{% endblock scripts %}
